@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage('Create project') {
       steps {
-        deleteDir() // clean up workspace
+        deleteDir()
         checkout([$class: 'GitSCM', branches: [[name: '*/master']],
           doGenerateSubmoduleConfigurations: false,
           extensions: [[$class: 'SubmoduleOption',
@@ -42,7 +42,7 @@ pipeline{
     stage('Release bitfile') {
       steps {
         sh '''
-        PROJ_NAME=seg7
+        PROJ_NAME=vv
         RELEASE_DIR=/usr/share/nginx/html/releases/
   
         BASE_NAME=$PROJ_NAME-`date +"%Y-%m-%d-%H-%H:%M"`
